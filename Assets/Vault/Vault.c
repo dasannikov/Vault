@@ -1,6 +1,6 @@
 // Shared library build
-// WIN: gcc -O3 -std=c11 -Wall -shared -o DasVault.dll DasVault.c
-// OSX: clang -O3 -std=c11 -Wall -dynamiclib -o DasVault.dylib DasVault.c
+// WIN: gcc -O3 -std=c11 -Wall -shared -o Vault.dll Vault.c
+// OSX: clang -O3 -std=c11 -fms-extensions -Wall -dynamiclib -o osx/Vault.dylib Vault.c
 
 #include <stdint.h>
 #include <stdlib.h>
