@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 sealed class VaultInterop {
-#if UNITY_IOS
+#if ENABLE_IL2CPP
     [DllImport ("__Internal")] internal static extern IntPtr vault_init(int sizeOfElement, int count);
     [DllImport ("__Internal")] internal static extern IntPtr vault_init_with(int sizeOfElement, int count, IntPtr defaultElement);
     [DllImport ("__Internal")] internal static extern void vault_delete(IntPtr vault);

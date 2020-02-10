@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+// #define DLL __declspec(dllexport)
+#define DLL 
+
 // Vault info struct
 typedef struct {
     int32_t count;
@@ -24,7 +27,7 @@ int32_t _vault_next_pow(int32_t x) {
 }
 
 // Init vault. num_of_elements can be zero
-__declspec(dllexport) void* vault_init(int32_t size_of_element, int32_t num_of_elements) {
+ DLL void* vault_init(int32_t size_of_element, int32_t num_of_elements) {
     int32_t count_max = _vault_next_pow(num_of_elements);
     char* full_data = (char*)malloc(size_of_element * count_max + sizeof(vault_info));
 
@@ -38,7 +41,7 @@ __declspec(dllexport) void* vault_init(int32_t size_of_element, int32_t num_of_e
 }
 
 // Init vault and set default values. num_of_elements can be zero
-__declspec(dllexport) void* vault_init_with(int32_t size_of_element, int32_t num_of_elements, void* init_element) {
+DLL void* vault_init_with(int32_t size_of_element, int32_t num_of_elements, void* init_element) {
     char* vault = (char*)vault_init(size_of_element, num_of_elements);
     for (int32_t i = 0; i != num_of_elements; i++) {
         char* element_data = vault + size_of_element * i;
@@ -48,29 +51,29 @@ __declspec(dllexport) void* vault_init_with(int32_t size_of_element, int32_t num
 }
 
 // Get vault info struct
-__declspec(dllexport) vault_info* vault_get_info(void* vault) {
+DLL vault_info* vault_get_info(void* vault) {
     return (vault_info*)(((char*)vault) - sizeof(vault_info));
 }
 
 // Delete vault. Free memory
-__declspec(dllexport) void vault_delete(void* vault) {
+DLL void vault_delete(void* vault) {
     free(vault_get_info(vault));
 }
 
 // Get vault elements count
-__declspec(dllexport) int32_t vault_get_count(void* vault) {
+DLL int32_t vault_get_count(void* vault) {
     vault_info* info = vault_get_info(vault);
     return info->count;
 }
 
 // Get vault elements count max
-__declspec(dllexport) int32_t vault_get_count_max(void* vault) {
+DLL int32_t vault_get_count_max(void* vault) {
     vault_info* info = vault_get_info(vault);
     return info->count_max;
 }
 
 // Resize vault
-__declspec(dllexport) void* vault_resize(void* vault, int32_t new_count) {
+DLL void* vault_resize(void* vault, int32_t new_count) {
     vault_info* info = vault_get_info(vault);
 
     if (new_count <= info->count_max) {
@@ -90,7 +93,7 @@ __declspec(dllexport) void* vault_resize(void* vault, int32_t new_count) {
 }
 
 // Add element to the end of vault
-__declspec(dllexport) void* vault_add(void* vault, void* element) {
+DLL void* vault_add(void* vault, void* element) {
     int32_t old_count = vault_get_count(vault);
     vault = vault_resize(vault, old_count + 1);
     vault_info* info = vault_get_info(vault);
@@ -102,7 +105,7 @@ __declspec(dllexport) void* vault_add(void* vault, void* element) {
 }
 
 // [SLOW] Remove element at [index] position from vault. Move tail to front.
-__declspec(dllexport) void vault_remove(void* vault, int32_t index) {
+DLL void vault_remove(void* vault, int32_t index) {
     vault_info* info = vault_get_info(vault);
     int32_t new_count = info->count - 1;
     if (index > new_count)
@@ -117,7 +120,7 @@ __declspec(dllexport) void vault_remove(void* vault, int32_t index) {
 }
 
 // [FAST] Remove element at [index] position from vault. Swap last to [index].
-__declspec(dllexport) void vault_remove_swap(void* vault, int32_t index) {
+DLL void vault_remove_swap(void* vault, int32_t index) {
     vault_info* info = vault_get_info(vault);
     int32_t new_count = info->count - 1;
     if (index > new_count)
