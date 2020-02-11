@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TestVault : MonoBehaviour { 
+public class TestVault : MonoBehaviour {
 
+    public Text Label; 
+    
     [StructLayout(LayoutKind.Sequential)]
     struct Vec2f {
         public float x;
@@ -17,7 +20,7 @@ public class TestVault : MonoBehaviour {
     
     static void TestDev() {
         
-        var vecArr = new Vault<Vec2f>(10, new Vec2f(1.0f, 1.0f));
+        var vecArr = new Vault.Array<Vec2f>(10, new Vec2f(1.0f, 1.0f));
         
         for(var i = 0; i < vecArr.Count; i++) {
             Debug.Log($"{i}: {vecArr[i].x}, {vecArr[i].y}");
@@ -38,7 +41,7 @@ public class TestVault : MonoBehaviour {
     }
     
     float Test() {
-        var vecArr = new Vault<Vec2f>(0);
+        var vecArr = new Vault.Array<Vec2f>(0);
 
         // Add element
         var eNew = new Vec2f(0f, 0f);
@@ -81,7 +84,6 @@ public class TestVault : MonoBehaviour {
 
         watch.Stop();
         var elapsedMs = watch.ElapsedMilliseconds;
-        Debug.Log($"Summ: {summ.ToString("F")}");
-        Debug.Log($"Elapsed time: {(float)elapsedMs / 1000f}");
+        Label.text = $"Summ:  {summ.ToString("F")}\nTime: {(float) elapsedMs / 1000f}";
     }
 }
