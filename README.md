@@ -7,17 +7,17 @@ Collection of C11 files and prebuild dynamic libraries for Unity3D with common d
 - [ ] `Vault.List` - TODO. Doubly linked list
 - [ ] `Vault.Map` - TODO. Hash map
 
-Supported platforms:
+### Supported platforms:
 - Standalone Mono. Winows/MacOS/Linux
 - Standalone IL2CPP. Winows/MacOS/Linux
 - Mobile. iOS/Android
 - Other through IL2CPP or specific shared libraries
 
-Advantages:
+### Advantages:
 - Fast (Native code)
 - No C# allocations and GC
 - You manage your memory (`Free` means delete container and release memory)
-- Don't use any Unity3D features. Universal C# code. Can works with any .net code.
+- Don't use any Unity3D features. **Universal C# code**. Can works with any .net code
 
 ## Vault.Array
 `Vault.Array` is continius array of unmanaged types with dynamic array size and ability to remove element. Similar to C++ `std::vector` container. C# don't have collection like `Vault.Array`. Most similar realization with `List<T>` is approx. 20x slower in speed. Main porpose of `Vault.Array` is dynamic and fast creation of arrays with abillity to free memory without GC.
