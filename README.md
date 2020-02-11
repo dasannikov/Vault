@@ -2,7 +2,7 @@
 
 **DOWNLOAD:** [Latest build (Unity package)](https://github.com/dasannikov/Vault/releases)
 
-Collection of C11 files and prebuild dynamic libraries for Unity3D with common data structures.
+Collection of C11 files and prebuild dynamic libraries for Unity3D with common data structures. It use highly optimized C11 that even faster than STL C++ containers (apporix. 10% faster).
 - [x] `Vault.Array` - Continuous array similar to C++ `std::vector`
 - [ ] `Vault.List` - TODO. Doubly linked list
 - [ ] `Vault.Map` - TODO. Hash map
