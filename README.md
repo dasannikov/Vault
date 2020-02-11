@@ -59,12 +59,13 @@ vecArr.Free();
 
 | Platform | Vault.Array (Mono build) Time(sec) | Vault.Array (IL2CPP build) Time (sec) |
 |----------|----------------|-------------------|
-| AMD Phenom(tm) II x4 (Windows 7. 64Bit) | 0.257 (1) | 1.023 (2) |
-| AMD Phenom(tm) II x4 (Windows 7. 32Bit) | 0.388 (3) |  |
+| AMD Phenom(tm) II x4 (Win7. 64Bit) | 0.257 (1) | 1.023 (2) vs 0.243 (3) |
+| AMD Phenom(tm) II x4 (Win7. 32Bit) | 0.388 (4) |  |
 | MBP 2013. MacOS Catalina 10.15.3 |  | 0.192 |
 | iPhone6 iOS 12.4.5 |  | 0.195 |
 | Android |  |  |
 
 1. Prebuild DLL. GCC 64Bit with SSE optimized memmove.
-2. Built-in Unity3D compiler (VS). Looks like no SSE optimization.
-3. Prebuild DLL. Clang 32Bit withot SSE optimized memmove.
+2. Built-in Unity3D compiler (VS). Looks like no SSE optimization
+3. Prebuild DLL in IL2CPP build. GCC 64Bit with SSE optimized memmove
+4. Prebuild DLL. Clang 32Bit withot SSE optimized memmove
