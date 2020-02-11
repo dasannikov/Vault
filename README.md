@@ -17,9 +17,7 @@ Advantages:
 - You manage your memory (`Free` means delete and release memory)
 
 ## Vault.Array
-`Vault.Array` is continius array of unmanaged types with dynamic array size and ability to remove element. Similar to C++ std::vector container. C# don't have collection like `Vault.Array`. Most similar realization with `List<T>` is approx. 20x slower in speed.
-
-Main porpose of `Vault.Array` is dynamic creation of array with abillity to free memory without GC.
+`Vault.Array` is continius array of unmanaged types with dynamic array size and ability to remove element. Similar to C++ `std::vector` container. C# don't have collection like `Vault.Array`. Most similar realization with `List<T>` is approx. 20x slower in speed. Main porpose of `Vault.Array` is dynamic and fast creation of arrays with abillity to free memory without GC.
 
 ```csharp
 
@@ -39,8 +37,8 @@ vecArr.Add(new Vector2(21f, 22f));
 // Fast remove element by swap with last element
 vecArr.RemoveBySwap(1);
 
-// slowe remove element by memmove
-vecArr.RemoveBySwap(1);
+// Slow remove element by memmove. Relatively slow :)
+vecArr.Remove(1);
 
 // Swap elements
 vecArr.Swap(0, 1);
@@ -53,7 +51,8 @@ vecArr.Free();
 
 ```
 
-Performance test of creation 1 million object (dynamically one by one. Very bad alghorithm for C# GC) and remove 100 first elements after that. Very CPU intensive operation because we need to move all data to the front of array. Most similar realization with general C# `List<T>` is approx. 20x slower in speed.
+### Performance test
+ Creation of 1 million structs (Dynamic creation one by one. Very bad situation for generic C# collections and GC) and remove first 100 elements after that. Very CPU intensive operation because we need to move all data to the front of array. Most similar realization with general C# `List<T>` is approx. 20x slower in speed.
 
 | Platform | Mono Time(sec) | IL2CPP Time (sec) |
 |----------|----------------|-------------------|
