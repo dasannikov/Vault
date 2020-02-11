@@ -21,20 +21,20 @@ public class TestVault : MonoBehaviour {
     static void TestDev() {
 
         // New array with default initializer
-        var vecArr = new Vault.Array<Vec2f>(10, new Vec2f(1.0f, 1.0f));
+        var vecArr = new Vault.Array<Vector2>(10, new Vector2(1.0f, 1.0f));
         for(var i = 0; i < vecArr.Count; i++) {
             Debug.Log($"{i}: {vecArr[i].x}, {vecArr[i].y}");
         }
 
         // Set element value
-        vecArr[9] = new Vec2f(101f, 102f);
-        vecArr[0] = new Vec2f(101f, 102f);
+        vecArr[9] = new Vector2(101f, 102f);
+        vecArr[0] = new Vector2(101f, 102f);
 
         // Resize array
         vecArr.Resize(14);
         
         // Add element to array.
-        vecArr.Add(new Vec2f(21f, 22f));
+        vecArr.Add(new Vector2(21f, 22f));
         
         // Fast remove element by swap with last
         vecArr.RemoveBySwap(1);
