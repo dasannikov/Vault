@@ -57,12 +57,12 @@ Performance test of creation 1 million object (dynamically one by one. Very bad 
 
 | Platform | Mono Time(sec) | IL2CPP Time (sec) |
 |----------|----------------|-------------------|
-| AMD Phenom(tm) II x4 (Windows 7. 64Bit) | 0.257* | 1.023** |
-| AMD Phenom(tm) II x4 (Windows 7. 32Bit) | 0.388*** | TODO |
-| MBP 2013. MacOS Catalina 10.15.3 | TODO | 0.192 |
-| iPhone6 iOS 12.4.5 | x | 0.195 |
-| Android | x | TODO |
+| AMD Phenom(tm) II x4 (Windows 7. 64Bit) | 0.257 (1) | 1.023 (2) |
+| AMD Phenom(tm) II x4 (Windows 7. 32Bit) | 0.388 (3) |  |
+| MBP 2013. MacOS Catalina 10.15.3 |  | 0.192 |
+| iPhone6 iOS 12.4.5 |  | 0.195 |
+| Android |  |  |
 
-* Prebuild DLL. GCC 64Bit with SSE optimized memmove.
-** Built-in Unity3D compiler (VS). Looks like no SSE optimization.
-*** Prebuild DLL. Clang 32Bit withot SSE optimized memmove.
+1 Prebuild DLL. GCC 64Bit with SSE optimized memmove.
+2 Built-in Unity3D compiler (VS). Looks like no SSE optimization.
+3 Prebuild DLL. Clang 32Bit withot SSE optimized memmove.
