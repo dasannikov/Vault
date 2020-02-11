@@ -97,5 +97,10 @@ namespace Vault {
             _data = (T*) Interop.vault_array_resize((IntPtr) _data, 0);
         }
         
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public unsafe void Swap(int index1, int index2) {
+            Interop.vault_array_swap((IntPtr) _data, index1, index2);
+        }
+        
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TestVault : MonoBehaviour {
 
-    public Text Label; 
-    
+    public Text Label;
+
     [StructLayout(LayoutKind.Sequential)]
     struct Vec2f {
         public float x;
@@ -17,29 +17,46 @@ public class TestVault : MonoBehaviour {
             y = b;
         }
     }
-    
+
     static void TestDev() {
-        
+
+        // New array with default initializer
         var vecArr = new Vault.Array<Vec2f>(10, new Vec2f(1.0f, 1.0f));
-        
         for(var i = 0; i < vecArr.Count; i++) {
             Debug.Log($"{i}: {vecArr[i].x}, {vecArr[i].y}");
         }
 
+        // Set element value
         vecArr[9] = new Vec2f(101f, 102f);
+        vecArr[0] = new Vec2f(101f, 102f);
+
+        // Resize array
         vecArr.Resize(14);
+        
+        // Add element to array.
         vecArr.Add(new Vec2f(21f, 22f));
+        
+        // Fast remove element by swap with last
         vecArr.RemoveBySwap(1);
         
+        // Swap elements
+        vecArr.Swap(0, 1);
+
+        // Show elements
         for(var i = 0; i < vecArr.Count; i++) {
             Debug.Log($"{i}: {vecArr[i].x}, {vecArr[i].y}");
         }
-        
+
+        // Clear array
+        vecArr.Clear();
+
+        // Check array capacity
         Debug.Log(vecArr.Capacity);
         
+        // Free array after use
         vecArr.Free();
     }
-    
+
     float Test() {
         var vecArr = new Vault.Array<Vec2f>(0);
 
@@ -72,18 +89,21 @@ public class TestVault : MonoBehaviour {
     }
 
     void Start() {
-        var watch = System.Diagnostics.Stopwatch.StartNew();
-
-        float summ = 0;
         try {
+            
+            // Test API
+            TestDev();
+
+            // Test speed
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            float summ = 0;
             summ = Test();
-            //TestDev();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            Label.text = $"Summ:  {summ.ToString("F")}\nTime: {(float) elapsedMs / 1000f}";
+
         } catch(Exception ex) {
             Debug.Log(ex);
         }
-
-        watch.Stop();
-        var elapsedMs = watch.ElapsedMilliseconds;
-        Label.text = $"Summ:  {summ.ToString("F")}\nTime: {(float) elapsedMs / 1000f}";
     }
 }

@@ -133,10 +133,29 @@ DLLEXPORT void vault_array_remove_swap(void* vault, int32_t index) {
     }
 }
 
-// [FAST] Remove element at [index] position from vault. Swap last to [index].
+void _vault_swap_blocks_with_loop(void* const a, void* const b, const int32_t num) {
+    unsigned char* p;
+    unsigned char* q;
+    unsigned char* const sentry = (unsigned char*)a + num;
+
+    for (p = a, q = b; p < sentry; ++p, ++q) {
+        const unsigned char t = *p;
+        *p = *q;
+        *q = t;
+    }
+}
+
+// Swap elements of vault array [index1] <-> [index2].
 DLLEXPORT void vault_array_swap(void* vault, int32_t index1, int32_t index2) {
     vault_array_info* info = vault_array_get_info(vault);
-    char* dest = ((char*)vault) + info->size_of_element * index1;
-    char* src = ((char*)vault) + info->size_of_element * index2;
-    memcpy(dest, src, info->size_of_element);
+
+    if ((index1 < 0) || (index1 >= info->count))
+        return;
+
+    if ((index2 < 0) || (index2 >= info->count))
+        return;
+
+    char* pos1 = ((char*)vault) + info->size_of_element * index1;
+    char* pos2 = ((char*)vault) + info->size_of_element * index2;
+    _vault_swap_blocks_with_loop(pos1, pos2, info->size_of_element);
 }
