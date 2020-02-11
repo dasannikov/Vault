@@ -63,6 +63,6 @@ Performance test of creation 1 million object (dynamically one by one. Very bad 
 | iPhone6 iOS 12.4.5 |  | 0.195 |
 | Android |  |  |
 
-1 Prebuild DLL. GCC 64Bit with SSE optimized memmove.
-2 Built-in Unity3D compiler (VS). Looks like no SSE optimization.
-3 Prebuild DLL. Clang 32Bit withot SSE optimized memmove.
+1. Prebuild DLL. GCC 64Bit with SSE optimized memmove.
+2. Built-in Unity3D compiler (VS). Looks like no SSE optimization.
+3. Prebuild DLL. Clang 32Bit withot SSE optimized memmove.
