@@ -1,7 +1,23 @@
-# Vault Libray for Unity3D
+# Vault Libray for Unity3D (Native Plugin)
+
+Collection of C filees and prebuild dynamic libraries for Unity3D with common data structures.
+- [x] `Vault.Array` - continius array similar to C++ std::vector
+- [ ] `Vault.List` - TODO. Doubly linked list
+- [ ] `Vault.Map` - TODO. Hash map
+
+Supported platforms:
+- Standalone Mono. Winows/MacOS/Linux
+- Standalone IL2CPP. Winows/MacOS/Linux
+- Mobile. iOS/Android
+- Other through IL2CPP or specific shared libraries
+
+Advantages:
+- Fast (Native code)
+- No GC after usage
+- You manage your memory (`Free` means delete and release memory)
 
 ## Vault.Array
-`Vault.Array` is continius array of unmanaged types with dynamic array size and ability to remove element. Similar to C++ std::vactor container. C# don't have collection like `Vault.Array`. Most similar realization with `List<T>` is approx. 20x slower in speed.
+`Vault.Array` is continius array of unmanaged types with dynamic array size and ability to remove element. Similar to C++ std::vector container. C# don't have collection like `Vault.Array`. Most similar realization with `List<T>` is approx. 20x slower in speed.
 
 Main porpose of `Vault.Array` is dynamic creation of array with abillity to free memory without GC.
 
@@ -41,12 +57,12 @@ Performance test of creation 1 million object (dynamically one by one. Very bad 
 
 | Platform | Mono Time(sec) | IL2CPP Time (sec) |
 |----------|----------------|-------------------|
-| AMD Phenom(tm) II x4 (Windows 7. 64Bit) | 0.257[^1] | 1.023[^2] |
-| AMD Phenom(tm) II x4 (Windows 7. 32Bit) | 0.388[^3] | TODO |
+| AMD Phenom(tm) II x4 (Windows 7. 64Bit) | 0.257* | 1.023** |
+| AMD Phenom(tm) II x4 (Windows 7. 32Bit) | 0.388*** | TODO |
 | MBP 2013. MacOS Catalina 10.15.3 | TODO | 0.192 |
 | iPhone6 iOS 12.4.5 | x | 0.195 |
 | Android | x | TODO |
 
-[^1] Prebuild DLL. GCC 64Bit with SSE optimized memmove.
-[^2] Built-in Unity3D compiler (VS). Looks like no SSE optimization.
-[^3] Prebuild DLL. Clang 32Bit withot SSE optimized memmove.
+* Prebuild DLL. GCC 64Bit with SSE optimized memmove.
+** Built-in Unity3D compiler (VS). Looks like no SSE optimization.
+*** Prebuild DLL. Clang 32Bit withot SSE optimized memmove.
