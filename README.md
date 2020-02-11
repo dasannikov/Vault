@@ -15,7 +15,7 @@ Supported platforms:
 
 Advantages:
 - Fast (Native code)
-- No GC after usage
+- No C# allocations and GC
 - You manage your memory (`Free` means delete container and release memory)
 - Don't use any Unity3D features. Universal C# code. Can works with any .net code.
 
