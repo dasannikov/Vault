@@ -16,8 +16,8 @@ Supported platforms:
 Advantages:
 - Fast (Native code)
 - No GC after usage
-- You manage your memory (`Free` means delete and release memory)
-- Didn't use any Unity3D features. Universal C# code. Can works with any .net code.
+- You manage your memory (`Free` means delete container and release memory)
+- Don't use any Unity3D features. Universal C# code. Can works with any .net code.
 
 ## Vault.Array
 `Vault.Array` is continius array of unmanaged types with dynamic array size and ability to remove element. Similar to C++ `std::vector` container. C# don't have collection like `Vault.Array`. Most similar realization with `List<T>` is approx. 20x slower in speed. Main porpose of `Vault.Array` is dynamic and fast creation of arrays with abillity to free memory without GC.
