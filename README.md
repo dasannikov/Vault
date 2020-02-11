@@ -55,7 +55,7 @@ vecArr.Free();
 ```
 
 ### Performance test
- Creation of 1 million structs (Dynamic creation one by one. Very bad situation for generic C# collections and GC) and remove first 100 elements after that. Very CPU intensive operation because we need to move all data to the front of array. Most similar realization with general C# `List<T>` is approx. 20x slower in speed.
+ Creation of 1 million Vector2 structs (Dynamic resize and creation one by one. Bad situation for generic C# collections and GC) and remove first 100 elements after that. Very CPU intensive operation because we need to move all data to the front of array. Most similar realization with generic C# `List<T>` is approx. 20x slower in speed.
 
 | Platform | Mono Time(sec) | IL2CPP Time (sec) |
 |----------|----------------|-------------------|
