@@ -57,6 +57,7 @@ vecArr.Free();
 ### Performance test
  Creation of 1 million Vector2 structs (Dynamic resize and creation one by one. Bad situation for generic C# collections and GC) and remove first 100 elements after that. Very CPU intensive operation because we need to move all data to the front of array. Most similar realization with generic C# `List<T>` is approx. 20x slower in speed.
 
+
 | Platform | Vault.Array (Mono build) Time(sec) | Vault.Array (IL2CPP build) Time (sec) |
 |----------|----------------|-------------------|
 | AMD Phenom(tm) II x4 (Win7. 64Bit) | 0.257 (1) | 1.023 (2) vs 0.243 (3) |
@@ -65,7 +66,7 @@ vecArr.Free();
 | iPhone6 iOS 12.4.5 |  | 0.195 |
 | Android |  |  |
 
-1. Prebuild DLL. GCC 64Bit with SSE optimized memmove.
+1. Prebuild DLL. GCC 64Bit with SSE optimized `memmove`.
 2. Built-in Unity3D compiler (VS). Looks like no SSE optimization
-3. Prebuild DLL in IL2CPP build. GCC 64Bit with SSE optimized memmove
-4. Prebuild DLL. Clang 32Bit withot SSE optimized memmove
+3. Prebuild DLL in IL2CPP build. GCC 64Bit with SSE optimized `memmove`
+4. Prebuild DLL. Clang 32Bit without SSE optimized `memmove`
