@@ -1,5 +1,7 @@
 # Vault Libray for Unity3D (Native Plugin)
 
+**DOWNLOAD:** [Latest build (Unity package)](https://github.com/dasannikov/Vault/releases)
+
 Collection of C filees and prebuild dynamic libraries for Unity3D with common data structures.
 - [x] `Vault.Array` - continius array similar to C++ std::vector
 - [ ] `Vault.List` - TODO. Doubly linked list
@@ -15,8 +17,6 @@ Advantages:
 - Fast (Native code)
 - No GC after usage
 - You manage your memory (`Free` means delete and release memory)
-
-**DOWNLOAD:** [Latest build in RELEASES page (Unity package)](https://github.com/dasannikov/Vault/releases)
 
 ## Vault.Array
 `Vault.Array` is continius array of unmanaged types with dynamic array size and ability to remove element. Similar to C++ `std::vector` container. C# don't have collection like `Vault.Array`. Most similar realization with `List<T>` is approx. 20x slower in speed. Main porpose of `Vault.Array` is dynamic and fast creation of arrays with abillity to free memory without GC.
