@@ -1,10 +1,9 @@
 using System;
 using System.Runtime.CompilerServices;
-using UnityEngine;
 
 namespace Vault {
 
-    public struct Array<T> where T : unmanaged {
+    public struct List<T> where T : unmanaged {
 
         unsafe T* _data;
 
@@ -24,7 +23,7 @@ namespace Vault {
             }
         }
 
-        public int Length {
+        public int Count {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get {
                 unsafe {
@@ -43,26 +42,27 @@ namespace Vault {
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public unsafe Array(int count) {
+        public unsafe List(int count) {
             _data = (T*) Interop.vault_array_init(sizeof(T), count);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public unsafe Array(int count, ref T defaultElement) {
+        public unsafe List(int count, ref T defaultElement) {
             fixed(T* e = &defaultElement) {
                 _data = (T*) Interop.vault_array_init_with(sizeof(T), count, (IntPtr) e);
             }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public unsafe Array(int count, T defaultElement) {
+        public unsafe List(int count, T defaultElement) {
             var e = &defaultElement;
             _data = (T*) Interop.vault_array_init_with(sizeof(T), count, (IntPtr) e);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public unsafe void Free() {
-            Interop.vault_array_delete((IntPtr) _data);
+            if(_data != null)
+                Interop.vault_array_delete((IntPtr) _data);
             _data = null;
         }
 

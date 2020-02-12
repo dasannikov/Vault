@@ -20,11 +20,13 @@ struct TestStruct {
 public class Tests : MonoBehaviour {
 
     public Text Label;
+    
     const int _testResizeSize = 10_000_000;
     const int _testRemoveSize = 20;
 
     List<TestStruct> testList;
-    Vault.Array<TestStruct> testVault;
+    Vault.List<TestStruct> testVault;
+    
     // NativeList<TestStruct> testNativeList;
 
     /*
@@ -59,7 +61,6 @@ public class Tests : MonoBehaviour {
         }
     }
 
-
     void Test(string description, Action methodName) {
         var watch = System.Diagnostics.Stopwatch.StartNew();
         methodName();
@@ -72,7 +73,7 @@ public class Tests : MonoBehaviour {
         try {
             testList = new List<TestStruct>(0);
             // testNativeList = new NativeList<TestStruct>(0, Allocator.Temp);
-            testVault = new Vault.Array<TestStruct>(0);
+            testVault = new Vault.List<TestStruct>(0);
             
             Debug.Log("---");
             Debug.Log($"Resize and Add new element ony by one. {_testResizeSize} elements.");
