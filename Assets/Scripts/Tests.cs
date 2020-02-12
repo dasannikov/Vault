@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
-using Unity.Collections;
+// using Unity.Collections;
 using UnityEngine.UI;
 
 [StructLayout(LayoutKind.Sequential)]
@@ -25,19 +25,15 @@ public class Tests : MonoBehaviour {
 
     List<TestStruct> testList;
     Vault.Array<TestStruct> testVault;
-    NativeList<TestStruct> testNativeList;
+    // NativeList<TestStruct> testNativeList;
 
+    /*
     void TestNativeList_ResizeAdd() {
         for(var i = 1; i <= _testResizeSize; ++i) {
-            testList.Add(new TestStruct(i, i * 2));
+            testNativeList.Add(new TestStruct(i, i * 2));
         }
     }
-
-    void TestNativeList_Remove() {
-        for(var i = 1; i <= _testRemoveSize; ++i) {
-            testList.RemoveAt(1);
-        }
-    }
+    */
 
     void TestCSharpList_ResizeAdd() {
         for(var i = 1; i <= _testResizeSize; ++i) {
@@ -75,24 +71,23 @@ public class Tests : MonoBehaviour {
     void TestRound() {
         try {
             testList = new List<TestStruct>(0);
-            testNativeList = new NativeList<TestStruct>(0, Allocator.Temp);
+            // testNativeList = new NativeList<TestStruct>(0, Allocator.Temp);
             testVault = new Vault.Array<TestStruct>(0);
             
             Debug.Log("---");
             Debug.Log($"Resize and Add new element ony by one. {_testResizeSize} elements.");
             Test("C#.List ResizeAdd", TestCSharpList_ResizeAdd);
-            Test("NativeList. ResizeAdd", TestNativeList_ResizeAdd);
+            // Test("NativeList. ResizeAdd", TestNativeList_ResizeAdd);
             Test("Vault.Array. ResizeAdd", TestVaultArray_ResizeAdd);
 
             Debug.Log($"Remove element ony by one. {_testRemoveSize} elements.");
             Test("C#.List Remove", TestCSharpList_Remove);
-            Test("NativeList. Remove", TestNativeList_Remove);
             Test("Vault.Array. Remove", TestVaultArray_Remove);
         } catch(Exception ex) {
             Debug.Log(ex);
         } finally {
             testVault.Free();
-            testNativeList.Dispose();
+            // testNativeList.Dispose();
             testList = null;
         }
     }
