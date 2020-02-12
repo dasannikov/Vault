@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using UnityEngine;
 
 namespace Vault {
 
@@ -23,7 +24,7 @@ namespace Vault {
             }
         }
 
-        public int Count {
+        public int Length {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get {
                 unsafe {
@@ -62,6 +63,7 @@ namespace Vault {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public unsafe void Free() {
             Interop.vault_array_delete((IntPtr) _data);
+            _data = null;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
