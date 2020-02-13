@@ -2,7 +2,7 @@
 
 **DOWNLOAD:** [Latest build (Unity package)](https://github.com/dasannikov/Vault/releases)
 
-Teasts and proof of concept. Collection of C11 files and prebuild dynamic libraries for Unity3D with common data structures. It use optimized C11 containers that even faster than STL C++ containers (apporix. 10% faster).
+Tests and proof of concept. Collection of C11 files and prebuild dynamic libraries for Unity3D with common data structures. It use optimized C11 containers that even faster than STL C++ containers (apporix. 10% faster).
 
 - [x] `Vault.List` - Continuous data similar to C++ `std::vector` and C# `List<T>`
 - [ ] Doubly linked list
@@ -56,5 +56,5 @@ vecArr.Free();
 ```
 
 ### Performance
-Performance is similar (±10%) to generic C# `List<T>` and Unit3D `NativeList<T>`
+Performance (IL2CPP Builds) is similar (±10%) to generic C# `List<T>` and Unit3D `NativeList<T>`
 
