@@ -2,7 +2,7 @@
 
 **DOWNLOAD:** [Latest build (Unity package)](https://github.com/dasannikov/Vault/releases)
 
-Tests and proof of concept. Collection of C files and prebuild dynamic libraries for Unity3D with common data structures. It use optimized cross platform C containers that even faster than STL C++ containers (apporix. 10% faster).
+Tests and proof of concept. Collection of C files and prebuild dynamic libraries for Unity3D with common data structures. It use optimized cross platform C containers that even faster than STL C++ containers (apporix. 10% faster). Zero allocations.
 
 - [x] `Vault.List` - Continuous data similar to C++ `std::vector` and C# `List<T>`
 - [ ] Doubly linked list
@@ -26,6 +26,7 @@ Tests and proof of concept. Collection of C files and prebuild dynamic libraries
 ```csharp
 
 // New list with default initializer
+// Vault.List is a struct. Zero allocations in C# memory
 var vecArr = new Vault.List<Vector2>(10, new Vector2(1.0f, 1.0f));
 
 // Set element value
@@ -51,6 +52,7 @@ vecArr.Swap(0, 1);
 vecArr.Clear();
 
 // Free list after use
+// Completely release unmanaged memory
 vecArr.Free();
 
 ```
