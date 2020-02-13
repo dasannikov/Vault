@@ -18,7 +18,7 @@ Tests and proof of concept. Collection of C files and prebuild dynamic libraries
 - Fast (Native code)
 - No C# allocations and GC
 - You manage your memory (`Free` means delete container and release memory)
-- Doesn't use any Unity3D features. **Universal C# code**. Can works with any .NET code
+- Doesn't use any Unity3D features. **Universal C# code**. Can work with any .NET code
 
 ## Vault.List
 `Vault.List` is continius container of unmanaged types with dynamic size and ability to remove element. Similar to C++ `std::vector` container and C# `List<T>`. Main porpose of `Vault.List` is dynamic and fast creation of arrays with abillity to free memory without GC.
