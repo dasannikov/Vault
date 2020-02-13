@@ -2,7 +2,7 @@
 
 **DOWNLOAD:** [Latest build (Unity package)](https://github.com/dasannikov/Vault/releases)
 
-Tests and proof of concept. Collection of C11 files and prebuild dynamic libraries for Unity3D with common data structures. It use optimized C11 containers that even faster than STL C++ containers (apporix. 10% faster).
+Tests and proof of concept. Collection of C files and prebuild dynamic libraries for Unity3D with common data structures. It use optimized cross platform C containers that even faster than STL C++ containers (apporix. 10% faster).
 
 - [x] `Vault.List` - Continuous data similar to C++ `std::vector` and C# `List<T>`
 - [ ] Doubly linked list
@@ -18,7 +18,7 @@ Tests and proof of concept. Collection of C11 files and prebuild dynamic librari
 - Fast (Native code)
 - No C# allocations and GC
 - You manage your memory (`Free` means delete container and release memory)
-- Don't use any Unity3D features. **Universal C# code**. Can works with any .net code
+- Doesn't use any Unity3D features. **Universal C# code**. Can works with any .NET code
 
 ## Vault.List
 `Vault.List` is continius container of unmanaged types with dynamic size and ability to remove element. Similar to C++ `std::vector` container and C# `List<T>`. Main porpose of `Vault.List` is dynamic and fast creation of arrays with abillity to free memory without GC.
